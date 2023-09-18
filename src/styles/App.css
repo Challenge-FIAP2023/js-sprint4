@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    min-height: 90vh;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: rgb(126, 179, 45);
+}
+
+
+.container-text h2{
+    font-size: 46px;
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+
+.container-text{
+    padding: 3% 15% 7% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 70vh;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.texto{
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 80px;
+    font-size: 18px;
+    margin: 50px;
+}
+
+#bg-img{
+    width: 50%;
+}
+
+#latas-lixo-img{
+    width: 400px;
+    height: auto;
+}
+
+#lixeira-inteligente-img{
+    border: 2px solid #6f9d3f;
+    border-radius: 20px;
+}
+
+#app-img{
+    width: 300px;
+}
+
+#coleta-img{
+    width: 800px;
+}
+
+.bg{
+    background-color: #ffffff;
+}
+
+.container-img-app {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#fotoSobre {
+    height: 400px;
+}
