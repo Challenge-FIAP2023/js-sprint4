@@ -11,11 +11,11 @@ return (
                 <li><Link to="">Smart Trash</Link></li>
                 <li><Link to="lixeira-inteligente">Lixeira Inteligente</Link></li>
                 <li><Link to="aplicativo">Aplicativo</Link></li>
-                <li><Link to="coleta-seletiva">Coleta Seletiva</Link></li>
                 <li><Link to="feedbacks">Feedbacks</Link></li>
-                <li><Link to="contato">Contato</Link></li>
                 <li><Link to="sobre">Sobre</Link></li>
-
+                <li><Link to="coleta-seletiva">Coleta Seletiva</Link></li>
+                <li><Link to="login">Login</Link></li>
+                <li><Link to="cadastro">Cadastro</Link></li>
             </ul>
         </nav>
     </header>

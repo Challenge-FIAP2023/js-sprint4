@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import FotoLixeira from '../assets/img/lixeiras.png'
+import FotoLixeira from '../assets/img/lixeiras.jpg'
 
 function LixeiraInteligente() {
     const [quantNoCarrinho, setQuantNoCarrinho] = useState(0);
@@ -18,14 +18,14 @@ function LixeiraInteligente() {
 
     return (    
         <>
-        <div className="container bg">
+        <section className="container bg">
             <div className="container-text bg">
                 <h2>Lixeira Inteligente</h2>
                 <img src={FotoLixeira} alt="lixeiras" id="lixeira-inteligente-img"/>
-                <p className="texto">A nossa solução é uma Lixeira Inteligente que utiliza tecnologia de ponta para  identificar e separar automaticamente os diferentes tipos de lixo, facilitando a coleta seletiva e aumentando a reciclagem. Com compartimentos separados para resíduos orgânicos, recicláveis e não recicláveis, a Lixeira Inteligente garante que cada tipo de lixo seja depositado no lugar correto, evitando a contaminação e a poluição do meio ambiente. Com a nossa solução, é possível contribuir para a preservação do meio ambiente e para a promoção de um estilo de vida mais sustentável. A Lixeira Inteligente está presente em {quantLixeirasSimulada} empresas e é uma maneira fácil e conveniente de fazer a sua parte pela reciclagem e pelo futuro do planeta.</p>
+                <p className="texto">Nossa lixeira inteligente é uma solução avançada que utiliza tecnologia de ponta para simplificar a coleta seletiva e aumentar a reciclagem. Ela separa automaticamente diferentes tipos de resíduos, evitando contaminação e poluição ambiental. <br/><br/> Ao oferecer compartimentos para resíduos orgânicos, recicláveis e não recicláveis, você pode contribuir para a preservação do meio ambiente de forma simples e conveniente, promovendo um estilo de vida sustentável. A Lixeira Inteligente está presente em {quantLixeirasSimulada} empresas e é uma maneira fácil e conveniente de fazer a sua parte pela reciclagem e pelo futuro do planeta.</p>
                 <button className="btn" onClick={adicionarAoCarrinho}>Adicionar ao carrinho ({quantNoCarrinho})</button>
             </div>
-        </div>
+        </section>
         </>
     )
 }

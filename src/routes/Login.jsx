@@ -1,6 +1,6 @@
 import { } from 'react'
 
-function Contato(){
+function Login(){
 
     const validarFormulario =()=> {
 
@@ -23,10 +23,10 @@ function Contato(){
 
     return(
         <>
-        <div className="container bg">
+        <section className="container bg">
             <div className="form-container">
                 <div className="form-header">
-                    <h2>Contato</h2>
+                    <h2>Login</h2>
                 </div>
             
                 <form className="form">
@@ -48,9 +48,9 @@ function Contato(){
                     <button type="submit" className="form-btn" onClick={validarFormulario}>Enviar</button>
                 </form>
             </div>
-        </div>
+        </section>
         </>
     )
 }
 
-export default Contato
+export default Login
