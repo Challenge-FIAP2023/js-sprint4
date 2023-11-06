@@ -1,4 +1,6 @@
 import { } from 'react';
+import { BaseSection } from '../assets/styles/Base.style';
+
 import LogoGoogle from '../assets/img/logo-google.png';
 import LogoNubank from '../assets/img/logo-nubank.png';
 import LogoIBM from '../assets/img/logo-ibm.png';
@@ -8,7 +10,7 @@ function Feedbacks(){
     return(
         <>
 
-        <section className="container bg">
+        <BaseSection>
             <div className="container-card-title">
                 <h2>Feedbacks</h2>
             </div>
@@ -52,7 +54,7 @@ function Feedbacks(){
                 </div>
 
             </div>
-        </section>
+        </BaseSection>
         
         {/* Fim Cards */}
         

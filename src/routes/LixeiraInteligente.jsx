@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { BaseSection } from '../assets/styles/Base.style';
+
 import FotoLixeira from '../assets/img/lixeiras.jpg'
 
 function LixeiraInteligente() {
@@ -18,14 +20,14 @@ function LixeiraInteligente() {
 
     return (    
         <>
-        <section className="container bg">
-            <div className="container-text bg">
+        <BaseSection>
+            <div>
                 <h2>Lixeira Inteligente</h2>
                 <img src={FotoLixeira} alt="lixeiras" id="lixeira-inteligente-img"/>
                 <p className="texto">Nossa lixeira inteligente é uma solução avançada que utiliza tecnologia de ponta para simplificar a coleta seletiva e aumentar a reciclagem. Ela separa automaticamente diferentes tipos de resíduos, evitando contaminação e poluição ambiental. <br/><br/> Ao oferecer compartimentos para resíduos orgânicos, recicláveis e não recicláveis, você pode contribuir para a preservação do meio ambiente de forma simples e conveniente, promovendo um estilo de vida sustentável. A Lixeira Inteligente está presente em {quantLixeirasSimulada} empresas e é uma maneira fácil e conveniente de fazer a sua parte pela reciclagem e pelo futuro do planeta.</p>
                 <button className="btn" onClick={adicionarAoCarrinho}>Adicionar ao carrinho ({quantNoCarrinho})</button>
             </div>
-        </section>
+        </BaseSection>
         </>
     )
 }

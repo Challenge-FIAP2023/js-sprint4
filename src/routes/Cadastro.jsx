@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup  from 'yup'
 
+import { BaseSection } from '../assets/styles/Base.style';
+
 function Cadastro(){
 
     const schema = yup.object({
@@ -43,7 +45,7 @@ function Cadastro(){
 
     return(
         <>
-        <section className="container bg">
+        <BaseSection>
             <div className="container-text">
                 <h2>Cadastro</h2>
                 <form onSubmit={handleSubmit(inserirCLientes)}>
@@ -109,7 +111,7 @@ function Cadastro(){
                     ))}
                 </div>
             </div>
-        </section>
+        </BaseSection>
         </>
     )
 }

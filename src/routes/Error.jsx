@@ -1,11 +1,12 @@
-import { } from 'react'
+import { } from 'react';
+import { BaseSection } from '../assets/styles/Base.style';
 
 function Error(){
     return(
         <>
-        <section>
+        <BaseSection>
             <h1>404-Página não encontrada.</h1>
-        </section>
+        </BaseSection>
         </>
     )
 }
