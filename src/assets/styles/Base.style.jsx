@@ -169,3 +169,50 @@ export const FeedbackTitleContainer = styled.div`
         margin: auto 0;
     }
 `
+// ------------------------ Aplicativo ------------------------
+
+export const AppTextContainer = styled(BaseTextContainer)`
+    text-align: center;
+    padding: 0 20%;
+    
+    p {
+        margin: 40px 0 50px 0;
+    }
+`
+
+export const AppImgContainer = styled.div`
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+`
+
+export const AppBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-color-gray);
+    margin: 10px;
+    padding: 25px 40px;
+    border-radius: 20px;
+
+    h3 {
+        font-size: 2.5rem;
+        font-family: var(--fonte-titulo);
+        text-align: center;
+        margin-bottom: 26px;
+    }
+
+    img {
+        border: 6px solid #797676;
+        border-radius: 20px;
+        width: 100%;
+        box-shadow: 0 10px 20px 0 #b5b3b3;
+        transition: .5s;
+        
+        &:hover {
+            box-shadow: 0 0 20px 0 #2b8a40;
+            transform: scale(1.05)
+        }
+    }
+`
