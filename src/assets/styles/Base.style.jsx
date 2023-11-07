@@ -15,6 +15,7 @@ export const BaseSection = styled.section`
 export const GraySection = styled(BaseSection)`
     background-color: ${bgGray};
 `
+
 export const GreenSection = styled(BaseSection)`
     background-color: ${bgGreen};
 `
@@ -38,18 +39,20 @@ export const BaseTextContainer = styled.div`
     
 `
 
-// ------------------------ Sobre ------------------------
+// ------------------------ Home ------------------------
 
-export const SobreContainer = styled.div `
+
+// ------------------------ Grid | Sobre e Lixeira------------------------
+
+
+export const GridContainer = styled.div `
     display: grid;
     width: 100%;
-    height: 640px;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 25px;
-    padding: 0 5%;
 `
 
-export const SobreTextContainer = styled(BaseTextContainer) `
+export const GridTextContainer = styled(BaseTextContainer) `
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,16 +66,43 @@ export const SobreTextContainer = styled(BaseTextContainer) `
     }
 `
 
-export const SobreImgContainer = styled.div `
+export const GridImgContainer = styled.div `
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     
+`
+
+// ------------------------ Sobre ------------------------
+
+export const SobreImgContainer = styled(GridImgContainer) `
     img {
         max-height: 500px;
     }
 `
 
+// ------------------------ Lixeira Inteligente ------------------------
 
+export const LixeiraImgContainer = styled(GridImgContainer) `
+    img {
+        max-height: 400px;
+    }
+`
+// ------------------------ Coleta Seletiva ------------------------
 
+export const ColetaImgContainer = styled(GridImgContainer)`
+    img {
+        border-radius: 16px;
+        max-width: 100%;
+        max-height: 90%;
+    }
+`
+
+export const ColetaGridContainer = styled(GridContainer)`
+    gap: 50px;
+    border-radius: 26px;
+    padding: 20px 20px;
+    box-shadow: 0 0 30px 0 #b5b3b3;
+    background-color: #fff;
+`

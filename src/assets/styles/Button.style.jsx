@@ -21,21 +21,13 @@ export const ContentButton = styled.a`
 
 `
 
-export const LoginButton = styled.button`
+export const LoginButton = styled(ContentButton)`
     width: 100%;
     margin-top: 20px;
-    padding: 10px 20px;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    border: 2px solid ${primaryColor};
-    background-color: ${primaryColor};
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: .5s;
 
     &:hover {
         background-color: #1d6e34;
         border-color: #1d6e34;
+        color: #fff;
     }
 `
