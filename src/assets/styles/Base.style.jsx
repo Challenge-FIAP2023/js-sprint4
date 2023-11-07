@@ -15,10 +15,12 @@ export const BaseSection = styled.section`
 
 export const GraySection = styled(BaseSection)`
     background-color: ${bgGray};
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 `
 
 export const GreenSection = styled(BaseSection)`
     background-color: ${bgGreen};
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
 `
 
 export const GreenSpan = styled.span`

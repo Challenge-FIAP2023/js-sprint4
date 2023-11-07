@@ -120,7 +120,7 @@ export const FormCadastroHeader = styled.div`
     padding-left: 2%;
     
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: #fff;
     }
 `
@@ -132,7 +132,7 @@ export const CadastroFieldset = styled.fieldset`
 `
 
 export const FieldsetLegend = styled.legend`
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0 auto;
     margin-bottom: 40px;

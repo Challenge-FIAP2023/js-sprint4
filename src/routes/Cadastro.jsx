@@ -16,9 +16,9 @@ function Cadastro(){
         nome:yup.string().required("Campo Nome Completo obrigatório"),
         email:yup.string().email("Digite um email Válido")
         .required("Campo email obrigatório"),
-        cpf:yup.string().min(11,'CPF deve conter 11 digitos')
+        cpf:yup.string().min(11,'CPF deve conter 11 dígitos')
         .required("Campo cpf Obrigatório"),
-        cep:yup.string().min(8, 'CEP deve conter 8 digitos').required("Campo CEP obrigatório"),
+        cep:yup.string().min(8, 'CEP deve conter 8 dígitos').required("Campo CEP obrigatório"),
         rua:yup.string().required("Campo Rua obrigatório"),
         numero:yup.string().required("Campo Número obrigatório"),
         bairro:yup.string().required("Campo Bairro obrigatório"),

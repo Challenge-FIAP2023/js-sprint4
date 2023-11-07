@@ -1,4 +1,4 @@
-import {  } from 'react';
+import { useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 import { GreenSection } from '../assets/styles/Base.style.jsx'
@@ -9,23 +9,28 @@ function Login(){
 
     const navigate = useNavigate();
 
-    // const user = useRef();
-    // const password = useRef();
+    const user = useRef();
+    const password = useRef();
 
     const validarFormulario =()=> {
 
-        let usernameInput =  document.getElementById("username").value
-        let passwordInput = document.getElementById("password").value
-
-        if(usernameInput == "" || passwordInput == ""){
+        if(user.current.value == "" || password.current.value == ""){
             alert("Por favor, preencha todos os campos.")
         }else{
-            alert("Seus dados foram registrados com sucesso.")
-            navigate('/');
+            if (user.current.value === 'admin' && password.current.value === '1234'){
+                let token =
+                    Math.random().toString(20).substring(2) +
+                    Math.random().toString(20).substring(2);
+                sessionStorage.setItem('username', user.current.value);
+                sessionStorage.setItem('password', token);
+                alert("Seus dados foram registrados com sucesso.")
+                navigate('/');
+            }else{
+                alert("Usuário ou senha inválidos! Tente novamente")
+            }
         }
 
-        sessionStorage.setItem('username', usernameInput);
-        sessionStorage.setItem('password', passwordInput);
+        
     };
     
 
@@ -43,12 +48,12 @@ function Login(){
 
                             <InputLoginBox>
                                 <label htmlFor="username">Usuário</label>
-                                <input type="text" id="username" name="username"/>
+                                <input type="text" id="username" name="username" ref={user}/>
                             </InputLoginBox>
 
                             <InputLoginBox>
                                 <label htmlFor="password">Senha</label>
-                                <input type="text" id="password" name="password"/>
+                                <input type="password" id="password" name="password" ref={password}/>
                             </InputLoginBox>
 
                             <ButtonBox>
