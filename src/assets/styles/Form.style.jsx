@@ -25,7 +25,6 @@ export const LoginFieldset = styled.fieldset`
     flex-direction: column;
     justify-content: space-between;
     border: 0;
-    border: 2px solid green;
 `
 
 export const FormLoginHeader = styled.div`
