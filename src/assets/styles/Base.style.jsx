@@ -26,6 +26,10 @@ export const GreenSpan = styled.span`
     color: ${primaryColor};
 `
 
+export const RedSpan = styled.span`
+    color: #ff1d1d;
+`
+
 export const BaseTextContainer = styled.div`
     h2 {
         font-size: 4rem;

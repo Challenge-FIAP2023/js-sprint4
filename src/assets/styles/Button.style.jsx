@@ -21,7 +21,7 @@ export const ContentButton = styled.a`
 
 `
 
-export const LoginButton = styled.button`
+export const SignInUpButton = styled.button`
     width: 100%;
     margin-top: 20px;
     padding: 14px 24px;
@@ -30,15 +30,15 @@ export const LoginButton = styled.button`
     text-decoration: none;
     letter-spacing: 1px;
     cursor: pointer;
-    border: 2px solid ${primaryColor};
-    background-color: ${primaryColor};
+    border: 2px solid #1d6e34;
+    background-color: #1d6e34;
     color: #fff;
     font-size: 1.5rem;
     font-weight: bold;
 
     &:hover {
-        background-color: #1d6e34;
-        border-color: #1d6e34;
+        background-color: #30b957;
+        border-color: #30b957;
         color: #fff;
     }
 `

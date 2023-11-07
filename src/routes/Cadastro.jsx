@@ -3,7 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup  from 'yup'
 
-import { BaseSection } from '../assets/styles/Base.style';
+import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx';
+import { SignInUpButton } from '../assets/styles/Button.style.jsx';
+import { SignUpButtonBox, CadastroFieldset, FieldsetLegend, CadastroForm, InputFlex, InputCadastroGroup, InputCadastroBox, CadastroContainer, FormCadastroHeader } from '../assets/styles/Form.style.jsx';
 
 function Cadastro(){
 
@@ -27,7 +29,6 @@ function Cadastro(){
        }
     
        function buscarCep(e){
-        //regex- expressão regular- formatação
         const cep = e.target.value.replace(/\D/g,'')
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
         .then((res)=> res.json())
@@ -45,58 +46,96 @@ function Cadastro(){
 
     return(
         <>
-        <BaseSection>
-            <div className="container-text">
-                <h2>Cadastro</h2>
-                <form onSubmit={handleSubmit(inserirCLientes)}>
-                    <fieldset>
-                        <legend>Dados Pessoais:</legend>
-                        <label>
-                        Nome:
-                        <input type="text" {...register('nome')}/>
-                        <span>{errors.nome?.message}</span>
-                        </label>
+        <GreenSection>
+            <CadastroContainer>
 
-                        <label>
-                        Email:
-                        <input type="text" {...register('email')}/>
-                        <span>{errors.email?.message}</span>
-                        </label>
+                <FormCadastroHeader>
+                    <h2>Preencha com suas informações pessoais</h2>
+                </FormCadastroHeader>
 
-                        <label>
-                        Cpf:
-                        <input type="text" {...register('cpf')}/>
-                        <span>{errors.cpf?.message}</span>
-                        </label>
+                <CadastroForm onSubmit={handleSubmit(inserirCLientes)}>
+
+
+                    <CadastroFieldset>
+                        <FieldsetLegend>Dados Pessoais</FieldsetLegend>
+
+                        <InputCadastroGroup>
+
+                            <InputFlex>
+                                <InputCadastroBox>
+                                    <label>Nome Completo</label>
+                                    <input type="text" {...register('nome')} placeholder='Nome Completo'/>
+                                    <RedSpan>{errors.nome?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                                <InputCadastroBox>
+                                    <label>CPF</label>
+                                    <input type="text" {...register('cpf')} placeholder='000.000.000-00'/>
+                                    <RedSpan>{errors.cpf?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                            </InputFlex>
+
+                            <InputCadastroBox>
+                                <label>Email</label>
+                                <input type="text" {...register('email')} placeholder='exemplo@email.com'/>
+                                <RedSpan>{errors.email?.message}</RedSpan>
+                            </InputCadastroBox>
+
+                        </InputCadastroGroup>
                     
-                    </fieldset>
-                    <fieldset>
-                        <legend>Dados Endereço:</legend>
-                        <label>
-                        Cep:
-                        <input type="text" {...register('cep')} onBlur={buscarCep} />
-                        </label>
-                        <label>
-                        Rua:
-                        <input type="text" {...register('rua')}/>
-                        </label>
+                    </CadastroFieldset>
 
-                        <label>
-                        Numero:
-                        <input type="text" {...register('numero')}/>
-                        </label>
-                        <label>
-                        Bairro:
-                        <input type="text" {...register('bairro')}/>
-                        </label>
-                        <label>
-                        Cidade:
-                        <input type="text" {...register('cidade')}/>
-                        </label>
-                        <button type="submit">Cadastrar</button>
-                        <button type="reset">limpar</button>
-                    </fieldset>
-                </form>
+                    <CadastroFieldset>
+
+                        <FieldsetLegend>Dados Endereço</FieldsetLegend>
+
+                        <InputCadastroGroup>
+
+                            <InputFlex>
+
+                                <InputCadastroBox>
+                                    <label>CEP</label>
+                                    <input type="text" {...register('cep')} onBlur={buscarCep} placeholder='00000-000'/>
+                                </InputCadastroBox>
+                                
+                                <InputCadastroBox>
+                                    <label>Rua</label>
+                                    <input type="text" {...register('rua')} placeholder='Logradouro'/>
+                                </InputCadastroBox>
+
+                                <InputCadastroBox>
+                                    <label>Número</label>
+                                    <input type="text" {...register('numero')} placeholder='Número'/>
+                                </InputCadastroBox>
+
+                            </InputFlex>
+                            
+                            <InputFlex>
+
+                                <InputCadastroBox>
+                                    <label>Bairro</label>
+                                    <input type="text" {...register('bairro')} placeholder='Bairro'/>
+                                </InputCadastroBox>
+
+                                <InputCadastroBox>
+                                    <label>Cidade </label>
+                                    <input type="text" {...register('cidade')} placeholder='Cidade'/>
+                                </InputCadastroBox>
+
+                            </InputFlex>
+                            
+                        </InputCadastroGroup>
+
+                        <SignUpButtonBox>
+                            <SignInUpButton>Cadastrar</SignInUpButton>
+                            <SignInUpButton type="reset">Limpar Campos</SignInUpButton>
+                        </SignUpButtonBox>
+
+                    </CadastroFieldset>
+
+                </CadastroForm>
+
                 <div>
                     {listaClientes.map((cli,index)=>(
                         <div  key={index}>    
@@ -110,8 +149,9 @@ function Cadastro(){
                     
                     ))}
                 </div>
-            </div>
-        </BaseSection>
+
+            </CadastroContainer>
+        </GreenSection>
         </>
     )
 }

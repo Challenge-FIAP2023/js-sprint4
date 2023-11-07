@@ -2,8 +2,8 @@ import { } from 'react';
 import { Link } from "react-router-dom";
 
 import { GreenSection } from '../assets/styles/Base.style.jsx'
-import { LoginButton } from '../assets/styles/Button.style.jsx';
-import { FormContainer, FormLogin, Fieldset, FormHeader, InputGroup, InputBox, ButtonBox, SingUpBox } from '../assets/styles/Login.style.jsx';
+import { SignInUpButton } from '../assets/styles/Button.style.jsx';
+import { FormContainer, LoginForm, LoginFieldset, FormLoginHeader, InputLoginGroup, InputLoginBox, ButtonBox, SingUpLoginBox } from '../assets/styles/Form.style.jsx';
 
 function Login(){
 
@@ -27,38 +27,37 @@ function Login(){
         <>
         <GreenSection>
             <FormContainer>
-                <FormLogin>
-                    <Fieldset>
-                        <FormHeader>
+                <LoginForm>
+                    <LoginFieldset>
+                        <FormLoginHeader>
                             <h2>Login</h2>
-                        </FormHeader>
+                        </FormLoginHeader>
                 
-                        <InputGroup>
+                        <InputLoginGroup>
 
-                            <InputBox>
+                            <InputLoginBox>
                                 <label htmlFor="username">Usuário</label>
                                 <input type="text" id="username" name="username"/>
-                            </InputBox>
+                            </InputLoginBox>
 
-                            <InputBox>
+                            <InputLoginBox>
                                 <label htmlFor="password">Senha</label>
                                 <input type="text" id="password" name="password"/>
-                            </InputBox>
+                            </InputLoginBox>
 
                             <ButtonBox>
-                                <LoginButton type="submit" onClick={validarFormulario}>Login</LoginButton>
+                                <SignInUpButton type="submit" onClick={validarFormulario}>Login</SignInUpButton>
                             </ButtonBox>
 
-                            <SingUpBox>
+                            <SingUpLoginBox>
                                 <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link></p>
-                                
-                            </SingUpBox>
+                            </SingUpLoginBox>
 
-                        </InputGroup>
+                        </InputLoginGroup>
 
-                    </Fieldset>
+                    </LoginFieldset>
             
-                </FormLogin>
+                </LoginForm>
             </FormContainer>
         </GreenSection>
         </>
