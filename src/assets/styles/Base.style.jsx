@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { primaryColor, titleFont, bgGray, bgGreen } from './variables.jsx'
+import { primaryColor, titleFont, bgGray, bgGreen } from './variables.jsx';
+import HeroBackgroundImg from '../img/hero.jpeg'
 
 // ------------------------ Base Styles ------------------------
 
@@ -39,8 +40,38 @@ export const BaseTextContainer = styled.div`
     
 `
 
-// ------------------------ Home ------------------------
+// ------------------------ Hero ------------------------
 
+export const HeroContainer = styled.section`
+    background-image: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)), url(${HeroBackgroundImg});
+    width: 100%;
+    height: calc(100vh - 86px);
+    color: #fff;
+    display: flex;
+    justify-content: right;
+`
+
+export const HeroContent = styled.div `
+    height: 100%;
+    width: 60%;
+    padding: 0 8%;
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 36px;
+    
+    h1 {
+        font-size: 8rem;
+        font-family: ${titleFont};
+    }
+    
+    p {
+        font-size: 1.4rem;
+        
+    }
+`
 
 // ------------------------ Grid | Sobre e Lixeira------------------------
 

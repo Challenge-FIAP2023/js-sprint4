@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { BaseSection, GraySection, GreenSection, GreenSpan, ColetaGridContainer, ColetaImgContainer, GridTextContainer, GridContainer, LixeiraImgContainer } from '../assets/styles/Base.style';
+import { HeroContainer, HeroContent, GraySection, GreenSection, GreenSpan, ColetaGridContainer, ColetaImgContainer, GridTextContainer, GridContainer, LixeiraImgContainer } from '../assets/styles/Base.style';
 import { ContentButton } from '../assets/styles/Button.style.jsx';
 import Feedbacks from './Feedbacks.jsx';
 
-import FotoLixeiraInteligente from '../assets/img/hero.jpeg';
 import FotoColeta from '../assets/img/falta-de-coleta-seletiva.jpg';
 import FotoLixeira from '../assets/img/lixeiras.jpg';
 
@@ -19,18 +18,17 @@ function Home() {
     
     return(
         <>
-        <BaseSection>
-            <div className="container-text">
-                <h2>SmartTrash</h2>
-                <img src={FotoLixeiraInteligente} alt="Foto de uma lixeira inteligente da Smart Trash" id="bg-img"/>
+        <HeroContainer>
+            <HeroContent>
+                <h1>SMART TRASH</h1>
                 <p>Bem-vindo à <GreenSpan>Smart Trash</GreenSpan>: sua solução inovadora para a gestão de resíduos. Junte-se a nós e construa um futuro sustentável!</p>
-                <a href="/lixeira-inteligente" className="btn-home">Conheça o nosso produto</a>
-            </div>
-        </BaseSection>
+                <ContentButton href="#section-lixeira">Conheça o nosso produto!</ContentButton>
+            </HeroContent>
+        </HeroContainer>
 
         {/* ---------- Lixeira Inteligente ---------- */}
 
-        <GraySection>
+        <GraySection id='section-lixeira'>
             <GridContainer>
                 <GridTextContainer>
                     <h2>Lixeira Inteligente</h2>
