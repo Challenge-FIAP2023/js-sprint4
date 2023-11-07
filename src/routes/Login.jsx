@@ -1,11 +1,16 @@
-import { } from 'react';
-import { Link } from "react-router-dom";
+import {  } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 import { GreenSection } from '../assets/styles/Base.style.jsx'
 import { SignInUpButton } from '../assets/styles/Button.style.jsx';
 import { FormContainer, LoginForm, LoginFieldset, FormLoginHeader, InputLoginGroup, InputLoginBox, ButtonBox, SingUpLoginBox } from '../assets/styles/Form.style.jsx';
 
 function Login(){
+
+    const navigate = useNavigate();
+
+    // const user = useRef();
+    // const password = useRef();
 
     const validarFormulario =()=> {
 
@@ -16,10 +21,11 @@ function Login(){
             alert("Por favor, preencha todos os campos.")
         }else{
             alert("Seus dados foram registrados com sucesso.")
+            navigate('/');
         }
 
-        localStorage.setItem('username', usernameInput);
-        localStorage.setItem('Password', passwordInput);
+        sessionStorage.setItem('username', usernameInput);
+        sessionStorage.setItem('password', passwordInput);
     };
     
 

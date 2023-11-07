@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from "react-router-dom";
 import * as yup  from 'yup'
 
 import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx';
@@ -9,12 +10,20 @@ import { SignUpButtonBox, CadastroFieldset, FieldsetLegend, CadastroForm, InputF
 
 function Cadastro(){
 
+    const navigate = useNavigate();
+
     const schema = yup.object({
-        nome:yup.string().required("Campo nome Obrigatório"),
+        nome:yup.string().required("Campo Nome Completo obrigatório"),
         email:yup.string().email("Digite um email Válido")
         .required("Campo email obrigatório"),
         cpf:yup.string().min(11,'CPF deve conter 11 digitos')
-        .required("Campo cpf Obrigatório")
+        .required("Campo cpf Obrigatório"),
+        cep:yup.string().min(8, 'CEP deve conter 8 digitos').required("Campo CEP obrigatório"),
+        rua:yup.string().required("Campo Rua obrigatório"),
+        numero:yup.string().required("Campo Número obrigatório"),
+        bairro:yup.string().required("Campo Bairro obrigatório"),
+        cidade:yup.string().required("Campo Cidade obrigatório")
+
        })
        .required();
     
@@ -26,6 +35,8 @@ function Cadastro(){
     
        function inserirCLientes(cliente){
         setListaClientes([...listaClientes, cliente])
+        alert('Seus dados foram cadastrados com sucesso!')
+        navigate('/')
        }
     
        function buscarCep(e){
@@ -97,16 +108,19 @@ function Cadastro(){
                                 <InputCadastroBox>
                                     <label>CEP</label>
                                     <input type="text" {...register('cep')} onBlur={buscarCep} placeholder='00000-000'/>
+                                    <RedSpan>{errors.cep?.message}</RedSpan>
                                 </InputCadastroBox>
                                 
                                 <InputCadastroBox>
                                     <label>Rua</label>
                                     <input type="text" {...register('rua')} placeholder='Logradouro'/>
+                                    <RedSpan>{errors.rua?.message}</RedSpan>
                                 </InputCadastroBox>
 
                                 <InputCadastroBox>
                                     <label>Número</label>
                                     <input type="text" {...register('numero')} placeholder='Número'/>
+                                    <RedSpan>{errors.numero?.message}</RedSpan>
                                 </InputCadastroBox>
 
                             </InputFlex>
@@ -116,11 +130,13 @@ function Cadastro(){
                                 <InputCadastroBox>
                                     <label>Bairro</label>
                                     <input type="text" {...register('bairro')} placeholder='Bairro'/>
+                                    <RedSpan>{errors.bairro?.message}</RedSpan>
                                 </InputCadastroBox>
 
                                 <InputCadastroBox>
                                     <label>Cidade </label>
                                     <input type="text" {...register('cidade')} placeholder='Cidade'/>
+                                    <RedSpan>{errors.cidade?.message}</RedSpan>
                                 </InputCadastroBox>
 
                             </InputFlex>
@@ -149,6 +165,7 @@ function Cadastro(){
                     
                     ))}
                 </div>
+
 
             </CadastroContainer>
         </GreenSection>
