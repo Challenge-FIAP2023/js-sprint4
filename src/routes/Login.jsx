@@ -1,54 +1,66 @@
-import { } from 'react'
+import { } from 'react';
+import { Link } from "react-router-dom";
+
+import { GreenSection } from '../assets/styles/Base.style.jsx'
+import { LoginButton } from '../assets/styles/Button.style.jsx';
+import { FormContainer, FormLogin, Fieldset, FormHeader, InputGroup, InputBox, ButtonBox, SingUpBox } from '../assets/styles/Login.style.jsx';
 
 function Login(){
 
     const validarFormulario =()=> {
 
-        let nomeInput =  document.getElementById("nome").value
-        let telInput = document.getElementById("telefone").value
-        let emailInput = document.getElementById("email").value
+        let usernameInput =  document.getElementById("username").value
+        let passwordInput = document.getElementById("password").value
 
-        if(nomeInput == "" || telInput == "" || emailInput == ""){
+        if(usernameInput == "" || passwordInput == ""){
             alert("Por favor, preencha todos os campos.")
         }else{
             alert("Seus dados foram registrados com sucesso.")
         }
 
-        localStorage.setItem('usuario', nomeInput);
-        localStorage.setItem('tel', telInput);
-        localStorage.setItem('email', emailInput);
+        localStorage.setItem('username', usernameInput);
+        localStorage.setItem('Password', passwordInput);
     };
     
 
-
     return(
         <>
-        <section className="container bg">
-            <div className="form-container">
-                <div className="form-header">
-                    <h2>Login</h2>
-                </div>
+        <GreenSection>
+            <FormContainer>
+                <FormLogin>
+                    <Fieldset>
+                        <FormHeader>
+                            <h2>Login</h2>
+                        </FormHeader>
+                
+                        <InputGroup>
+
+                            <InputBox>
+                                <label htmlFor="username">Usuário</label>
+                                <input type="text" id="username" name="username"/>
+                            </InputBox>
+
+                            <InputBox>
+                                <label htmlFor="password">Senha</label>
+                                <input type="text" id="password" name="password"/>
+                            </InputBox>
+
+                            <ButtonBox>
+                                <LoginButton type="submit" onClick={validarFormulario}>Login</LoginButton>
+                            </ButtonBox>
+
+                            <SingUpBox>
+                                <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link></p>
+                                
+                            </SingUpBox>
+
+                        </InputGroup>
+
+                    </Fieldset>
             
-                <form className="form">
-                    <div className="form-content">
-                        <label htmlFor="nome"><strong>Nome:</strong></label>
-                        <input type="text" id="nome" name="nome" placeholder="Digite o seu nome..."/>
-                    </div>
-                    <div className="form-content">
-                        <label htmlFor="email"><strong>Email:</strong></label>
-                        <input type="text" id="email" name="email" placeholder="Digite o seu email..."/>
-            
-                    </div>
-            
-                    <div className="form-content">
-                        <label htmlFor="telefone"><strong>Telefone:</strong></label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone..."/>
-                    </div>
-            
-                    <button type="submit" className="form-btn" onClick={validarFormulario}>Enviar</button>
-                </form>
-            </div>
-        </section>
+                </FormLogin>
+            </FormContainer>
+        </GreenSection>
         </>
     )
 }

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { primaryColor } from './variables'
+import styled from 'styled-components';
+import { primaryColor } from './variables';
 
 export const FooterContainer = styled.footer `
     height: 100px;
