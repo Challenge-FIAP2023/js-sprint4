@@ -97,7 +97,7 @@ export const ColetaImgContainer = styled(GridImgContainer)`
         max-width: 100%;
         max-height: 90%;
     }
-`
+    `
 
 export const ColetaGridContainer = styled(GridContainer)`
     gap: 50px;
@@ -105,4 +105,67 @@ export const ColetaGridContainer = styled(GridContainer)`
     padding: 20px 20px;
     box-shadow: 0 0 30px 0 #b5b3b3;
     background-color: #fff;
+    `
+
+// ------------------------ Feedbacks ------------------------
+
+export const CardTitle = styled.h2`
+    font-size: 4rem;
+    font-weight: bolder;
+    margin-bottom: 40px;
+    font-family: ${titleFont};
+`
+
+export const CardsContainer = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    padding: 2rem;
+    margin: auto; 
+    gap: 56px;  
+`
+
+export const FeedbackContainer = styled.div`
+    background-color: #fff;
+    border-radius: 26px;
+    padding: 40px;
+    box-shadow: 0 0 30px 0 #b5b3b3;
+    transition: .5s;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.15);
+        box-shadow: 0 0 30px 0 #2b8a40;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-top: 20px
+    
+    }
+`
+
+export const FeedbackTitleContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    
+    #nubank, #google {
+        height: 40px;
+    }
+    
+    #ibm {
+        height: 30px;
+    }
+    
+    #starbucks {
+        height: 50px;
+    }
+    
+    h2 {
+        font-size: 2.4rem;
+        text-align: center;
+        margin: auto 0;
+    }
 `

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BaseSection, GraySection, GreenSection, GreenSpan, ColetaGridContainer, ColetaImgContainer, GridTextContainer, GridContainer, LixeiraImgContainer } from '../assets/styles/Base.style';
-import { ContentButton } from '../assets/styles/Button.style.jsx'
+import { ContentButton } from '../assets/styles/Button.style.jsx';
+import Feedbacks from './Feedbacks.jsx';
 
 import FotoLixeiraInteligente from '../assets/img/hero.jpeg';
 import FotoColeta from '../assets/img/falta-de-coleta-seletiva.jpg';
@@ -62,6 +63,10 @@ function Home() {
 
             </ColetaGridContainer>
         </GreenSection>
+        
+        {/* ---------- Feedback ---------- */}
+
+        <Feedbacks/>
 
         </>
     )
