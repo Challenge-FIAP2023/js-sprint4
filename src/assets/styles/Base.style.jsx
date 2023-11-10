@@ -86,7 +86,7 @@ export const GridContainer = styled.div `
     display: grid;
     width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 25px;
+    gap: 35px;
 `
 
 export const GridTextContainer = styled(BaseTextContainer) `

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HeroContainer, HeroContent, GraySection, GreenSection, GreenSpan, ColetaGridContainer, ColetaImgContainer, GridTextContainer, GridContainer, LixeiraImgContainer } from '../assets/styles/Base.style';
-import { ContentButton } from '../assets/styles/Button.style.jsx';
+import { ContentButton, LinkButton } from '../assets/styles/Button.style.jsx';
 import Feedbacks from './Feedbacks.jsx';
 
 import FotoColeta from '../assets/img/falta-de-coleta-seletiva.jpg';
@@ -33,7 +33,7 @@ function Home() {
                 <GridTextContainer>
                     <h2>Lixeira Inteligente</h2>
                     <p>Nossa lixeira inteligente é uma solução avançada que utiliza tecnologia de ponta para simplificar a coleta seletiva e aumentar a reciclagem. Ela separa automaticamente diferentes tipos de resíduos, evitando contaminação e poluição ambiental. <br/><br/> Oferecemos compartimentos para resíduos orgânicos, recicláveis e não recicláveis, facilitando a contribuição para a preservação do meio ambiente e promovendo um estilo de vida sustentável. Nossa Lixeira Inteligente está em uso em {quantLixeirasSimulada} empresas, tornando a reciclagem uma escolha fácil e conveniente para um futuro mais sustentável.</p>
-                    <ContentButton>Saiba mais</ContentButton>
+                    <LinkButton to='aplicativo'>Saiba mais</LinkButton>
                 </GridTextContainer>
 
                 <LixeiraImgContainer>
@@ -56,7 +56,7 @@ function Home() {
                 <GridTextContainer>
                     <h2>Coleta Seletiva</h2>
                     <p>A falta de coleta seletiva e a separação inadequada do lixo resultam em contaminação ambiental, riscos para a saúde e emissão de poluentes. A lixeira inteligente ajuda ao incentivar a coleta seletiva, reduzindo a quantidade de resíduos em aterros e mitigando impactos adversos.</p>
-                    <ContentButton href="#">Saiba mais</ContentButton>
+                    <ContentButton>Saiba mais</ContentButton>
                 </GridTextContainer>
 
             </ColetaGridContainer>
