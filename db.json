@@ -1,0 +1,22 @@
+{
+    "usuarios": [
+        {
+            "name": "Administrador",
+            "cpf": "000000000-00",
+            "email": "admin@smarttrash.com.br",
+            "telefone": 11999999999,
+            "username": "admin",
+            "password": "1234",
+            "id": 1
+        },
+        {
+            "name": "Victor",
+            "cpf": "000000000-00",
+            "email": "admin@smarttrash.com.br",
+            "telefone": 11999999999,
+            "username": "victor",
+            "password": "987",
+            "id": 1
+        }
+    ]
+}

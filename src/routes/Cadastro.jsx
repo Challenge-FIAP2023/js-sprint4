@@ -89,11 +89,21 @@ function Cadastro(){
 
                             </InputFlex>
 
-                            <InputCadastroBox>
+                            <InputFlex>
+                                <InputCadastroBox>
                                     <label>Email</label>
-                                <input type="text" {...register('email')} placeholder='exemplo@email.com'/>
-                                <RedSpan>{errors.email?.message}</RedSpan>
-                            </InputCadastroBox>
+                                    <input type="text" {...register('email')} placeholder='exemplo@email.com'/>
+                                    <RedSpan>{errors.email?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                                <InputCadastroBox>
+                                    <label>Telefone</label>
+                                    <input type="text" {...register('telefone')} placeholder='(99) 99999-9999'/>
+                                    <RedSpan>{errors.cpf?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                            </InputFlex>
+
 
                             <InputFlex>
                                 <InputCadastroBox>
