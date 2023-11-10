@@ -22,5 +22,3 @@ export const GlobalStyles = createGlobalStyle`
         background-size: cover;
     }
 `
-
-

@@ -31,15 +31,15 @@ export const SignInUpButton = styled.button`
     text-decoration: none;
     letter-spacing: 1px;
     cursor: pointer;
-    border: 2px solid #1d6e34;
-    background-color: #1d6e34;
+    border: 2px solid ${primaryColor};
+    background-color: ${primaryColor};
     color: #fff;
     font-size: 1.5rem;
     font-weight: bold;
 
     &:hover {
-        background-color: #30b957;
-        border-color: #30b957;
+        background-color: #1d6e34;
+        border-color: #1d6e34;
         color: #fff;
     }
 `

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgGray, titleFont } from './variables';
+import { bgGray, primaryColor, titleFont } from './variables';
 
 
 // -------------------- Login - Formulário --------------------
@@ -83,13 +83,13 @@ export const SingUpLoginBox = styled.div`
 // -------------------- Cadastro - Formulário --------------------
 
 export const CadastroContainer = styled.div`
-    border: 2px solid #0f5027;
+    border: 2px solid ${primaryColor};
     width: 84%;
     border-radius: 7px;
 `
 
 export const SignUpButtonBox = styled.div`
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +113,7 @@ export const CadastroForm = styled.form`
 
 export const FormCadastroHeader = styled.div`
     width: 100%;
-    background-color: #0f5027;
+    background-color: ${primaryColor};
     height: 100px;
     display: flex;
     align-items: center;
@@ -161,7 +161,6 @@ export const InputCadastroBox = styled.div`
     label {
         font-size: 1.3rem;
         font-weight: bold;
-        color: #0f5027;
     }
     
     input {
