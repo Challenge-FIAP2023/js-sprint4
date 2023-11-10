@@ -1,0 +1,9 @@
+{
+    "Administrador": {
+        "name": "Administrador",
+        "cpf": "1234",
+        "email": "admin@smarttrash.com.br",
+        "username": "admin",
+        "password": "1234"
+    }
+}

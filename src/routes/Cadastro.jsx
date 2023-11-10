@@ -13,11 +13,13 @@ function Cadastro(){
     const navigate = useNavigate();
 
     const schema = yup.object({
-        nome:yup.string().required("Campo Nome Completo obrigatório"),
-        email:yup.string().email("Digite um email Válido")
-        .required("Campo email obrigatório"),
+        name:yup.string().required("Campo Nome Completo obrigatório"),
         cpf:yup.string().min(11,'CPF deve conter 11 dígitos')
         .required("Campo cpf Obrigatório"),
+        email:yup.string().email("Digite um email Válido")
+        .required("Campo email obrigatório"),
+        username:yup.string().required("Campo Usuário obrigatório"),
+        password:yup.string().required("Camp Senha obrigatório"),
         cep:yup.string().min(8, 'CEP deve conter 8 dígitos').required("Campo CEP obrigatório"),
         rua:yup.string().required("Campo Rua obrigatório"),
         numero:yup.string().required("Campo Número obrigatório"),
@@ -75,7 +77,7 @@ function Cadastro(){
                             <InputFlex>
                                 <InputCadastroBox>
                                     <label>Nome Completo</label>
-                                    <input type="text" {...register('nome')} placeholder='Nome Completo'/>
+                                    <input type="text" {...register('name')} placeholder='Nome Completo'/>
                                     <RedSpan>{errors.nome?.message}</RedSpan>
                                 </InputCadastroBox>
 
@@ -88,10 +90,25 @@ function Cadastro(){
                             </InputFlex>
 
                             <InputCadastroBox>
-                                <label>Email</label>
+                                    <label>Email</label>
                                 <input type="text" {...register('email')} placeholder='exemplo@email.com'/>
                                 <RedSpan>{errors.email?.message}</RedSpan>
                             </InputCadastroBox>
+
+                            <InputFlex>
+                                <InputCadastroBox>
+                                    <label>Usuário</label>
+                                <input type="text" {...register('username')} placeholder='Usuário'/>
+                                <RedSpan>{errors.email?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                                <InputCadastroBox>
+                                    <label>Senha</label>
+                                    <input type="password" {...register('password')} placeholder='Senha'/>
+                                    <RedSpan>{errors.cpf?.message}</RedSpan>
+                                </InputCadastroBox>
+
+                            </InputFlex>
 
                         </InputCadastroGroup>
                     
