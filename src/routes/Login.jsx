@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
@@ -12,14 +12,14 @@ import { FormContainer, LoginForm, LoginFieldset, FormLoginHeader, InputLoginGro
 function Login() {
 
     const schema = yup.object({
-        username:yup.string().required("Campo Usuário obrigatório"),
-        password:yup.string().required("Campo Senha obrigatório")
-       }).required();
+        username: yup.string().required("Campo Usuário obrigatório"),
+        password: yup.string().required("Campo Senha obrigatório")
+    }).required();
 
-       const {register,handleSubmit,formState:{errors}}
-       =useForm({
-        resolver:yupResolver(schema)
-       })
+    const { register, handleSubmit, formState: { errors } }
+        = useForm({
+            resolver: yupResolver(schema)
+        })
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -35,25 +35,22 @@ function Login() {
 
     const navigate = useNavigate();
 
-    const user = useRef();
-    const password = useRef();
-
-    const validarFormulario = () => {
+    const validarFormulario = (data) => {
         let usuarioValido = false;
 
-        if (user.current.value == '' || password.current.value == "") {
+        if (data.username == '' || data.assword == "") {
             alert("Por favor, preencha todos os campos.")
         } else {
-            for (var [usuario, usuarioDados] of Object.entries(usuarios)) {
-                if (user.current.value === usuarioDados["username"] && password.current.value === usuarioDados["password"]) {
-                    let token =
-                        Math.random().toString(20).substring(2) +
+            for (const usuarioDados of usuarios) {
+                if (data.username === usuarioDados.username && data.password === usuarioDados.password) {
+                    let token = Math.random().toString(20).substring(2) +
                         Math.random().toString(20).substring(2);
-                    sessionStorage.setItem('username', user.current.value);
+                    sessionStorage.setItem('username', data.username);
                     sessionStorage.setItem('password', token);
                     usuarioValido = true;
                     alert("Seus dados foram registrados com sucesso.")
                     navigate('/');
+                    break;
                 }
             }
         }
@@ -63,12 +60,11 @@ function Login() {
         }
     };
 
-
     return (
         <>
             <GreenSection>
                 <FormContainer>
-                    <LoginForm onSubmit={handleSubmit()}>
+                    <LoginForm onSubmit={handleSubmit(validarFormulario)}>
                         <LoginFieldset>
                             <FormLoginHeader>
                                 <h2>Login</h2>
@@ -78,13 +74,13 @@ function Login() {
 
                                 <InputLoginBox>
                                     <label htmlFor="username">Usuário</label>
-                                    <input type="text" {...register('username')} placeholder='Usuário'/>
+                                    <input type="text" {...register('username')} placeholder='Usuário' />
                                     <RedSpan>{errors.username?.message}</RedSpan>
                                 </InputLoginBox>
 
                                 <InputLoginBox>
                                     <label htmlFor="password">Senha</label>
-                                    <input type="password" {...register('password')} placeholder='Senha'/>
+                                    <input type="password" {...register('password')} placeholder='Senha' />
                                     <RedSpan>{errors.password?.message}</RedSpan>
                                 </InputLoginBox>
 

@@ -1,187 +1,230 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
-import * as yup  from 'yup';
+import * as yup from 'yup';
 
 import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx';
 import { SignInUpButton } from '../assets/styles/Button.style.jsx';
 import { SignUpButtonBox, CadastroFieldset, FieldsetLegend, CadastroForm, InputFlex, InputCadastroGroup, InputCadastroBox, CadastroContainer, FormCadastroHeader } from '../assets/styles/Form.style.jsx';
 
-function Cadastro(){
+function Cadastro() {
 
     const navigate = useNavigate();
 
     const schema = yup.object({
-        name:yup.string().required("Campo Nome Completo obrigatório"),
-        cpf:yup.string().min(11,'CPF deve conter 11 dígitos')
-        .required("Campo cpf Obrigatório"),
-        email:yup.string().email("Digite um email Válido")
-        .required("Campo email obrigatório"),
-        telefone:yup.string().min(11, 'Telefone deve conter 11 dígitos').required("Campo Telefone obrigatório"),
-        username:yup.string().required("Campo Usuário obrigatório"),
-        password:yup.string().required("Camp Senha obrigatório"),
-        cep:yup.string().min(8, 'CEP deve conter 8 dígitos').required("Campo CEP obrigatório"),
-        rua:yup.string().required("Campo Rua obrigatório"),
-        numero:yup.string().required("Campo Número obrigatório"),
-        bairro:yup.string().required("Campo Bairro obrigatório"),
-        cidade:yup.string().required("Campo Cidade obrigatório")
+        name: yup.string().required("Campo Nome Completo obrigatório"),
+        cpf: yup.string().min(11, 'CPF deve conter 11 dígitos')
+            .required("Campo cpf Obrigatório"),
+        email: yup.string().email("Digite um email Válido")
+            .required("Campo email obrigatório"),
+        telefone: yup.string().min(11, 'Telefone deve conter 11 dígitos').required("Campo Telefone obrigatório"),
+        username: yup.string().required("Campo Usuário obrigatório"),
+        password: yup.string().required("Camp Senha obrigatório"),
+        cep: yup.string().min(8, 'CEP deve conter 8 dígitos').required("Campo CEP obrigatório"),
+        rua: yup.string().required("Campo Rua obrigatório"),
+        numero: yup.string().required("Campo Número obrigatório"),
+        bairro: yup.string().required("Campo Bairro obrigatório"),
+        cidade: yup.string().required("Campo Cidade obrigatório")
 
-       })
-       .required();
-    
-       const {register,handleSubmit,formState:{errors},setValue,setFocus}
-       =useForm({
-        resolver:yupResolver(schema)
-       })
+    })
+        .required();
 
-       const [listaUsuarios, setListaUsuarios]=useState([]);
-    
-       function inserirUsuarios(usuario){
-        setListaUsuarios([...listaUsuarios, usuario])
-        alert('Seus dados foram cadastrados com sucesso!')
-        navigate('/')
-       }
-    
-       function buscarCep(e){
-        const cep = e.target.value.replace(/\D/g,'')
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then((res)=> res.json())
-        .then((data)=> {
-          setValue('rua', data.logradouro);
-          setValue('bairro',data.bairro);
-          setValue('estado',data.uf)
-          setValue('cidade',data.localidade);
-          setFocus('numero');
-          
+    const { register, formState: { errors }, setValue, setFocus }
+        = useForm({
+            resolver: yupResolver(schema)
         })
-       }
+
+    //useParams
+    let { id } = useParams();
+
+    //useState para criar um novo cadastro
+    const [novo, setNovo] = useState({
+        id,
+        nome: "",
+        email: "",
+        telefone: "",
+        username: "",
+        password: "",
+        cep: "",
+        logradouro: "",
+        numero: "",
+        bairro: "",
+        cidade: ""
+        }
+    )
+
+    const handleChange = (e) => {
+        setNovo({ ...novo, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        fetch(`http://localhost:5000/usuarios/}`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(novo),
+        }).then(() => {
+            window.location = '/';
+        });
+    }
+
+    useEffect(()=>{
+        if(id){
+          fetch(`http://localhost:5000/usuarios/`)
+          .then((res)=>{
+            return res.json();
+          })
+          .then((data)=>{
+            setNovo(data);
+          });
+        }
+        },[id])
+
+    function buscarCep(e) {
+        const cep = e.target.value.replace(/\D/g, '')
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then((res) => res.json())
+            .then((data) => {
+                setValue('rua', data.logradouro);
+                setValue('bairro', data.bairro);
+                setValue('estado', data.uf)
+                setValue('cidade', data.localidade);
+                setFocus('numero');
+
+            })
+    }
 
 
-    return(
+    return (
         <>
-        <GreenSection>
-            <CadastroContainer>
+            <GreenSection>
+                <CadastroContainer>
 
-                <FormCadastroHeader>
-                    <h2>Preencha com suas informações pessoais</h2>
-                </FormCadastroHeader>
+                    <FormCadastroHeader>
+                        <h2>Preencha com suas informações pessoais</h2>
+                    </FormCadastroHeader>
 
-                <CadastroForm onSubmit={handleSubmit(inserirUsuarios)}>
-
-
-                    <CadastroFieldset>
-                        <FieldsetLegend>Dados Pessoais</FieldsetLegend>
-
-                        <InputCadastroGroup>
-
-                            <InputFlex>
-                                <InputCadastroBox>
-                                    <label>Nome Completo</label>
-                                    <input type="text" {...register('name')} placeholder='Nome Completo'/>
-                                    <RedSpan>{errors.nome?.message}</RedSpan>
-                                </InputCadastroBox>
-
-                                <InputCadastroBox>
-                                    <label>CPF</label>
-                                    <input type="text" {...register('cpf')} placeholder='000.000.000-00'/>
-                                    <RedSpan>{errors.cpf?.message}</RedSpan>
-                                </InputCadastroBox>
-
-                            </InputFlex>
-
-                            <InputFlex>
-                                <InputCadastroBox>
-                                    <label>Email</label>
-                                    <input type="text" {...register('email')} placeholder='exemplo@email.com'/>
-                                    <RedSpan>{errors.email?.message}</RedSpan>
-                                </InputCadastroBox>
-
-                                <InputCadastroBox>
-                                    <label>Telefone</label>
-                                    <input type="text" {...register('telefone')} placeholder='(99) 99999-9999'/>
-                                    <RedSpan>{errors.cpf?.message}</RedSpan>
-                                </InputCadastroBox>
-
-                            </InputFlex>
+                    <CadastroForm onSubmit={handleSubmit}>
 
 
-                            <InputFlex>
-                                <InputCadastroBox>
-                                    <label>Usuário</label>
-                                    <input type="text" {...register('username')} placeholder='Usuário'/>
-                                    <RedSpan>{errors.email?.message}</RedSpan>
-                                </InputCadastroBox>
+                        <CadastroFieldset>
+                            <FieldsetLegend>Dados Pessoais</FieldsetLegend>
 
-                                <InputCadastroBox>
-                                    <label>Senha</label>
-                                    <input type="password" {...register('password')} placeholder='Senha'/>
-                                    <RedSpan>{errors.cpf?.message}</RedSpan>
-                                </InputCadastroBox>
+                            <InputCadastroGroup>
 
-                            </InputFlex>
+                                <InputFlex>
+                                    <InputCadastroBox>
+                                        <label>Nome Completo</label>
+                                        <input type="text" {...register('name')} placeholder='Nome Completo' onChange={handleChange} />
+                                        <RedSpan>{errors.nome?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                        </InputCadastroGroup>
-                    
-                    </CadastroFieldset>
+                                    <InputCadastroBox>
+                                        <label>CPF</label>
+                                        <input type="text" {...register('cpf')} placeholder='000.000.000-00' onChange={handleChange} />
+                                        <RedSpan>{errors.cpf?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                    <CadastroFieldset>
+                                </InputFlex>
 
-                        <FieldsetLegend>Dados Endereço</FieldsetLegend>
+                                <InputFlex>
+                                    <InputCadastroBox>
+                                        <label>Email</label>
+                                        <input type="text" {...register('email')} placeholder='exemplo@email.com' onChange={handleChange} />
+                                        <RedSpan>{errors.email?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                        <InputCadastroGroup>
+                                    <InputCadastroBox>
+                                        <label>Telefone</label>
+                                        <input type="text" {...register('telefone')} placeholder='(99) 99999-9999' onChange={handleChange} />
+                                        <RedSpan>{errors.cpf?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                            <InputFlex>
+                                </InputFlex>
 
-                                <InputCadastroBox>
-                                    <label>CEP</label>
-                                    <input type="text" {...register('cep')} onBlur={buscarCep} placeholder='00000-000'/>
-                                    <RedSpan>{errors.cep?.message}</RedSpan>
-                                </InputCadastroBox>
-                                
-                                <InputCadastroBox>
-                                    <label>Rua</label>
-                                    <input type="text" {...register('rua')} placeholder='Logradouro'/>
-                                    <RedSpan>{errors.rua?.message}</RedSpan>
-                                </InputCadastroBox>
 
-                                <InputCadastroBox>
-                                    <label>Número</label>
-                                    <input type="text" {...register('numero')} placeholder='Número'/>
-                                    <RedSpan>{errors.numero?.message}</RedSpan>
-                                </InputCadastroBox>
+                                <InputFlex>
+                                    <InputCadastroBox>
+                                        <label>Usuário</label>
+                                        <input type="text" {...register('username')} placeholder='Usuário' onChange={handleChange} />
+                                        <RedSpan>{errors.email?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                            </InputFlex>
-                            
-                            <InputFlex>
+                                    <InputCadastroBox>
+                                        <label>Senha</label>
+                                        <input type="password" {...register('password')} placeholder='Senha' onChange={handleChange} />
+                                        <RedSpan>{errors.cpf?.message}</RedSpan>
+                                    </InputCadastroBox>
 
-                                <InputCadastroBox>
-                                    <label>Bairro</label>
-                                    <input type="text" {...register('bairro')} placeholder='Bairro'/>
-                                    <RedSpan>{errors.bairro?.message}</RedSpan>
-                                </InputCadastroBox>
+                                </InputFlex>
 
-                                <InputCadastroBox>
-                                    <label>Cidade </label>
-                                    <input type="text" {...register('cidade')} placeholder='Cidade'/>
-                                    <RedSpan>{errors.cidade?.message}</RedSpan>
-                                </InputCadastroBox>
+                            </InputCadastroGroup>
 
-                            </InputFlex>
-                            
-                        </InputCadastroGroup>
+                        </CadastroFieldset>
 
-                        <SignUpButtonBox>
-                            <SignInUpButton type="submit">Cadastrar</SignInUpButton>
-                            <SignInUpButton type="reset">Limpar Campos</SignInUpButton>
-                        </SignUpButtonBox>
+                        <CadastroFieldset>
 
-                    </CadastroFieldset>
+                            <FieldsetLegend>Dados Endereço</FieldsetLegend>
 
-                </CadastroForm>
+                            <InputCadastroGroup>
 
-            </CadastroContainer>
-        </GreenSection>
+                                <InputFlex>
+
+                                    <InputCadastroBox>
+                                        <label>CEP</label>
+                                        <input type="text" {...register('cep')} onBlur={buscarCep} placeholder='00000-000' onChange={handleChange} />
+                                        <RedSpan>{errors.cep?.message}</RedSpan>
+                                    </InputCadastroBox>
+
+                                    <InputCadastroBox>
+                                        <label>Rua</label>
+                                        <input type="text" {...register('rua')} placeholder='Logradouro' onChange={handleChange} />
+                                        <RedSpan>{errors.rua?.message}</RedSpan>
+                                    </InputCadastroBox>
+
+                                    <InputCadastroBox>
+                                        <label>Número</label>
+                                        <input type="text" {...register('numero')} placeholder='Número' onChange={handleChange} />
+                                        <RedSpan>{errors.numero?.message}</RedSpan>
+                                    </InputCadastroBox>
+
+                                </InputFlex>
+
+                                <InputFlex>
+
+                                    <InputCadastroBox>
+                                        <label>Bairro</label>
+                                        <input type="text" {...register('bairro')} placeholder='Bairro' onChange={handleChange} />
+                                        <RedSpan>{errors.bairro?.message}</RedSpan>
+                                    </InputCadastroBox>
+
+                                    <InputCadastroBox>
+                                        <label>Cidade </label>
+                                        <input type="text" {...register('cidade')} placeholder='Cidade' onChange={handleChange} />
+                                        <RedSpan>{errors.cidade?.message}</RedSpan>
+                                    </InputCadastroBox>
+
+                                </InputFlex>
+
+                            </InputCadastroGroup>
+
+                            <SignUpButtonBox>
+                                <SignInUpButton type="submit">Cadastrar</SignInUpButton>
+                                <SignInUpButton type="reset">Limpar Campos</SignInUpButton>
+                            </SignUpButtonBox>
+
+                        </CadastroFieldset>
+
+                    </CadastroForm>
+
+                </CadastroContainer>
+            </GreenSection>
         </>
     )
 }

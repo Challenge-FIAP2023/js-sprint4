@@ -1,22 +1,32 @@
 {
     "usuarios": [
         {
+            "id": 1,
             "name": "Administrador",
             "cpf": "00000000000",
             "email": "admin@smarttrash.com.br",
             "telefone": "11999999999",
             "username": "admin",
             "password": "1234",
-            "id": 1
+            "cep": "99999999999",
+            "logradouro": "Rua B",
+            "numero": "56",
+            "bairro": "Bairro A",
+            "cidade": "Cidade Z"
         },
         {
+            "id": 2,
             "name": "Victor",
             "cpf": "00000000000",
             "email": "admin@smarttrash.com.br",
             "telefone": "11999999999",
             "username": "victor",
             "password": "987",
-            "id": 1
+            "cep": "99999999999",
+            "logradouro": "Rua X",
+            "numero": "56",
+            "bairro": "Bairro Y",
+            "cidade": "Cidade Z"
         }
     ]
 }
