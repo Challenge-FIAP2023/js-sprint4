@@ -6,7 +6,7 @@ import { bgGray, primaryColor, titleFont } from './variables';
 
 export const FormContainer = styled.div`
     width: 500px;
-    height: 540px;
+    height: min-540px;
     background-color: ${bgGray};
     box-shadow: 0 10px 10px 0 #b5b3b3;
     border-radius: 10px;

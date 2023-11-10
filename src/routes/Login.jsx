@@ -1,11 +1,25 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
-import { GreenSection } from '../assets/styles/Base.style.jsx'
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx'
 import { SignInUpButton } from '../assets/styles/Button.style.jsx';
 import { FormContainer, LoginForm, LoginFieldset, FormLoginHeader, InputLoginGroup, InputLoginBox, ButtonBox, SingUpLoginBox } from '../assets/styles/Form.style.jsx';
 
 function Login() {
+
+    const schema = yup.object({
+        username:yup.string().required("Campo Usuário obrigatório"),
+        password:yup.string().required("Camp Senha obrigatório")
+       }).required();
+
+       const {register,handleSubmit,formState:{errors}}
+       =useForm({
+        resolver:yupResolver(schema)
+       })
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -19,11 +33,7 @@ function Login() {
             })
     }, []);
 
-
-
-
     const navigate = useNavigate();
-
 
     const user = useRef();
     const password = useRef();
@@ -47,7 +57,7 @@ function Login() {
                 }
             }
         }
-        
+
         if (!usuarioValido) {
             alert("Usuário ou senha inválidos! Tente novamente")
         }
@@ -58,7 +68,7 @@ function Login() {
         <>
             <GreenSection>
                 <FormContainer>
-                    <LoginForm>
+                    <LoginForm onSubmit={handleSubmit()}>
                         <LoginFieldset>
                             <FormLoginHeader>
                                 <h2>Login</h2>
@@ -68,16 +78,18 @@ function Login() {
 
                                 <InputLoginBox>
                                     <label htmlFor="username">Usuário</label>
-                                    <input type="text" id="username" name="username" ref={user} />
+                                    <input type="text" {...register('username')} placeholder='Usuário'/>
+                                    <RedSpan>{errors.username?.message}</RedSpan>
                                 </InputLoginBox>
 
                                 <InputLoginBox>
                                     <label htmlFor="password">Senha</label>
-                                    <input type="password" id="password" name="password" ref={password} />
+                                    <input type="password" {...register('password')} placeholder='Senha'/>
+                                    <RedSpan>{errors.password?.message}</RedSpan>
                                 </InputLoginBox>
 
                                 <ButtonBox>
-                                    <SignInUpButton type="submit" onClick={validarFormulario}>Login</SignInUpButton>
+                                    <SignInUpButton type="submit">Login</SignInUpButton>
                                 </ButtonBox>
 
                                 <SingUpLoginBox>

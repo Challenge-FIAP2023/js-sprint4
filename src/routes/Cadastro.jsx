@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from "react-router-dom";
-import * as yup  from 'yup'
+import * as yup  from 'yup';
 
 import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx';
 import { SignInUpButton } from '../assets/styles/Button.style.jsx';
@@ -33,10 +33,11 @@ function Cadastro(){
        =useForm({
         resolver:yupResolver(schema)
        })
-       const [listaClientes, setListaClientes]=useState([]);
+
+       const [listaUsuarios, setListaUsuarios]=useState([]);
     
-       function inserirCLientes(cliente){
-        setListaClientes([...listaClientes, cliente])
+       function inserirUsuarios(usuario){
+        setListaUsuarios([...listaUsuarios, usuario])
         alert('Seus dados foram cadastrados com sucesso!')
         navigate('/')
        }
@@ -53,7 +54,6 @@ function Cadastro(){
           setFocus('numero');
           
         })
-    
        }
 
 
@@ -66,7 +66,7 @@ function Cadastro(){
                     <h2>Preencha com suas informações pessoais</h2>
                 </FormCadastroHeader>
 
-                <CadastroForm onSubmit={handleSubmit(inserirCLientes)}>
+                <CadastroForm onSubmit={handleSubmit(inserirUsuarios)}>
 
 
                     <CadastroFieldset>
@@ -108,8 +108,8 @@ function Cadastro(){
                             <InputFlex>
                                 <InputCadastroBox>
                                     <label>Usuário</label>
-                                <input type="text" {...register('username')} placeholder='Usuário'/>
-                                <RedSpan>{errors.email?.message}</RedSpan>
+                                    <input type="text" {...register('username')} placeholder='Usuário'/>
+                                    <RedSpan>{errors.email?.message}</RedSpan>
                                 </InputCadastroBox>
 
                                 <InputCadastroBox>
@@ -171,28 +171,13 @@ function Cadastro(){
                         </InputCadastroGroup>
 
                         <SignUpButtonBox>
-                            <SignInUpButton>Cadastrar</SignInUpButton>
+                            <SignInUpButton type="submit">Cadastrar</SignInUpButton>
                             <SignInUpButton type="reset">Limpar Campos</SignInUpButton>
                         </SignUpButtonBox>
 
                     </CadastroFieldset>
 
                 </CadastroForm>
-
-                <div>
-                    {listaClientes.map((cli,index)=>(
-                        <div  key={index}>    
-                        <p>Nome:{cli.nome}</p>
-                        <p>Email:{cli.email}</p>
-                        <p>CPF:{cli.cpf}</p>
-                        <p>Rua:{cli.rua}</p>
-                        <p>Bairro:{cli.bairro}</p>
-                        <p>Cidade:{cli.cidade}</p>
-                        </div>
-                    
-                    ))}
-                </div>
-
 
             </CadastroContainer>
         </GreenSection>
