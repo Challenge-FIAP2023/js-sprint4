@@ -86,7 +86,7 @@ export const GridContainer = styled.div `
     display: grid;
     width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 35px;
+    gap: 25px;
 `
 
 export const GridTextContainer = styled(BaseTextContainer) `
@@ -124,6 +124,7 @@ export const SobreImgContainer = styled(GridImgContainer) `
 export const LixeiraImgContainer = styled(GridImgContainer) `
     img {
         max-height: 400px;
+        width: 100%;
     }
 `
 // ------------------------ Coleta Seletiva ------------------------
