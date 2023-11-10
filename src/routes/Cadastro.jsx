@@ -18,6 +18,7 @@ function Cadastro(){
         .required("Campo cpf Obrigatório"),
         email:yup.string().email("Digite um email Válido")
         .required("Campo email obrigatório"),
+        telefone:yup.string().min(11, 'Telefone deve conter 11 dígitos').required("Campo Telefone obrigatório"),
         username:yup.string().required("Campo Usuário obrigatório"),
         password:yup.string().required("Camp Senha obrigatório"),
         cep:yup.string().min(8, 'CEP deve conter 8 dígitos').required("Campo CEP obrigatório"),

@@ -13,7 +13,7 @@ function Login() {
 
     const schema = yup.object({
         username:yup.string().required("Campo Usuário obrigatório"),
-        password:yup.string().required("Camp Senha obrigatório")
+        password:yup.string().required("Campo Senha obrigatório")
        }).required();
 
        const {register,handleSubmit,formState:{errors}}
