@@ -63,8 +63,9 @@ export const InputLoginBox = styled.div`
     input {
         padding: 8px;
         border: 0px;
-        border-bottom: 1px solid black;
+        border-bottom: 2px solid #d1d1d1;
         font-size: 1.2rem;
+        background-color: ${bgGray};
     }
 `
 
@@ -161,6 +162,7 @@ export const InputCadastroBox = styled.div`
     label {
         font-size: 1.3rem;
         font-weight: bold;
+
     }
     
     input {

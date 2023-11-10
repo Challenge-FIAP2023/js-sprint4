@@ -1,5 +1,8 @@
 import { } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { HeaderContainer, HeaderBrand, HeaderMenu } from '../assets/styles/Header.style.jsx';
+import { LogoutButton } from '../assets/styles/Button.style.jsx'
+import LogoST from '../assets/img/logo-st-verde.png';
 
 function Nav (){
 
@@ -17,11 +20,14 @@ function Nav (){
 
 return (
     <>
-    <header className="header-page">
-        <h2>SmartTrash</h2>
-        <nav className="header-menu">
+    <HeaderContainer>
+        <HeaderBrand>
+            <img src={LogoST} alt="Logo Smart Trash" />
+            <h2>Smart Trash</h2>
+        </HeaderBrand>
+        <HeaderMenu>
             <ul>
-                <li><Link to="">Smart Trash</Link></li>
+                <li><Link to="">Home</Link></li>
                 <li><Link to="aplicativo">Aplicativo</Link></li>
                 <li><Link to="sobre">Sobre</Link></li>
                 {! (getUser && getPassword) ? (
@@ -31,12 +37,12 @@ return (
                     
                     </>
                 ) : (
-                    <li><button onClick={handleLogout}>Logout</button></li>
+                    <li><LogoutButton onClick={handleLogout}>Logout</LogoutButton></li>
                 )}
                 
             </ul>
-        </nav>
-    </header>
+        </HeaderMenu>
+    </HeaderContainer>
     </>
 )
 }

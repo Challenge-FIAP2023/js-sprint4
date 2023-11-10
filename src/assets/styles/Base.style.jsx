@@ -223,6 +223,7 @@ export const AppImgContainer = styled.div`
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 `
 
 export const AppBox = styled.div`
@@ -230,15 +231,16 @@ export const AppBox = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: var(--bg-color-gray);
-    margin: 10px;
-    padding: 25px 40px;
+    padding: 40px 40px;
     border-radius: 20px;
+    background-color: #fff;
 
     h3 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-family: var(--fonte-titulo);
         text-align: center;
         margin-bottom: 26px;
+        font-family: ${titleFont};
     }
 
     img {
@@ -250,7 +252,7 @@ export const AppBox = styled.div`
         
         &:hover {
             box-shadow: 0 0 20px 0 #2b8a40;
-            transform: scale(1.05)
+            transform: scale(1.1)
         }
     }
 `

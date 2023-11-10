@@ -33,7 +33,7 @@ function Home() {
                 <GridTextContainer>
                     <h2>Lixeira Inteligente</h2>
                     <p>Nossa lixeira inteligente é uma solução avançada que utiliza tecnologia de ponta para simplificar a coleta seletiva e aumentar a reciclagem. Ela separa automaticamente diferentes tipos de resíduos, evitando contaminação e poluição ambiental. <br/><br/> Oferecemos compartimentos para resíduos orgânicos, recicláveis e não recicláveis, facilitando a contribuição para a preservação do meio ambiente e promovendo um estilo de vida sustentável. Nossa Lixeira Inteligente está em uso em {quantLixeirasSimulada} empresas, tornando a reciclagem uma escolha fácil e conveniente para um futuro mais sustentável.</p>
-                    <LinkButton to='aplicativo'>Saiba mais</LinkButton>
+                    <LinkButton to='aplicativo'>Conheça o App</LinkButton>
                 </GridTextContainer>
 
                 <LixeiraImgContainer>
