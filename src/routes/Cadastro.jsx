@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 
 import { GreenSection, RedSpan } from '../assets/styles/Base.style.jsx';
@@ -11,8 +10,6 @@ import { SignInUpButton } from '../assets/styles/Button.style.jsx';
 import { SignUpButtonBox, CadastroFieldset, FieldsetLegend, CadastroForm, InputFlex, InputCadastroGroup, InputCadastroBox, CadastroContainer, FormCadastroHeader } from '../assets/styles/Form.style.jsx';
 
 function Cadastro() {
-
-    const navigate = useNavigate();
 
     const schema = yup.object({
         name: yup.string().required("Campo Nome Completo obrigatório"),
@@ -43,7 +40,7 @@ function Cadastro() {
     //useState para criar um novo cadastro
     const [novo, setNovo] = useState({
         id,
-        nome: "",
+        name: "",
         email: "",
         telefone: "",
         username: "",
@@ -63,7 +60,7 @@ function Cadastro() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/usuarios/}`, {
+        fetch(`http://localhost:5000/usuarios/${id ? id : ''}`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +73,7 @@ function Cadastro() {
 
     useEffect(()=>{
         if(id){
-          fetch(`http://localhost:5000/usuarios/`)
+          fetch(`http://localhost:5000/usuarios/${id}`)
           .then((res)=>{
             return res.json();
           })
