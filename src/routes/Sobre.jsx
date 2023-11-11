@@ -1,7 +1,7 @@
 import { } from 'react'
 import { ContentButton } from '../assets/styles/Button.style'
 import { GreenSpan, GraySection, GridContainer, GridTextContainer, SobreImgContainer } from '../assets/styles/Base.style'
-import LogoSmartTrash from '../assets/img/logo-st-nome.png'
+import LogoSmartTrash from '../assets/img/logo-st-verde-nome.png'
 
 function Sobre(){
     return(
