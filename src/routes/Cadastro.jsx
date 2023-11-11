@@ -83,19 +83,27 @@ function Cadastro() {
         }
         },[id])
 
-    function buscarCep(e) {
-        const cep = e.target.value.replace(/\D/g, '')
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
-            .then((res) => res.json())
-            .then((data) => {
-                setValue('rua', data.logradouro);
-                setValue('bairro', data.bairro);
-                setValue('estado', data.uf)
-                setValue('cidade', data.localidade);
-                setFocus('numero');
-
-            })
-    }
+        function buscarCep(e) {
+            const cep = e.target.value.replace(/\D/g, '');
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setNovo((prevState) => ({
+                        ...prevState,
+                        cep: data.cep || '',
+                        logradouro: data.logradouro || '',
+                        bairro: data.bairro || '',
+                        cidade: data.localidade || '',
+                        estado: data.uf || '',
+                    }));
+                    setValue('rua', data.logradouro || '');
+                    setValue('bairro', data.bairro || '');
+                    setValue('estado', data.uf || '');
+                    setValue('cidade', data.localidade || '');
+                    setFocus('numero');
+                });
+        }
+        
 
 
     return (
